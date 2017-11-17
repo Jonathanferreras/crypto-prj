@@ -1,4 +1,7 @@
 import string
+import sys
+
+sys.dont_write_bytecode = True
 
 def pw_check(password):
     if len(password) >= 24:
@@ -12,10 +15,10 @@ def pw_check(password):
         for char in password:
             if ABC_flag and char in ABC:
                 ABC_flag = False
-                print "ABC flag set"
+
             elif abc_flag and char in abc:
                 abc_flag = False
-                print "abc flag set"
+
             elif nums_flag and char in nums:
                 nums_flag = False
                 print "nums flag set"

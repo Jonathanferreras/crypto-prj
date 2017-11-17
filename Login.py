@@ -1,4 +1,7 @@
 import socket
+import sys
+
+sys.dont_write_bytecode = True
 
 def login(client, username, password):
     client.send("Login\n")

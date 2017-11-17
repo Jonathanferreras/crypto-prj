@@ -1,5 +1,8 @@
 import socket
+import sys
 from PasswordHandler import *
+
+sys.dont_write_bytecode = True
 
 def create_account(client):
     while True:

@@ -1,6 +1,8 @@
 import socket
 import sys
 
+sys.dont_write_bytecode = True
+
 def connect(server):
     host = "127.0.0.1"
     port = 7777

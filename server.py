@@ -3,6 +3,8 @@ import sys
 from CreateAccount import *
 from Login import *
 
+sys.dont_write_bytecode = True
+
 def connect():
     host = "127.0.0.1"
     port = 7777
