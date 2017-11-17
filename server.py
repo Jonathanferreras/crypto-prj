@@ -1,6 +1,7 @@
 import socket
 import sys
 from CreateAccount import *
+from Login import *
 
 def connect():
     host = "127.0.0.1"
@@ -37,25 +38,7 @@ if __name__ == '__main__':
                 username, password = create_account(client)
 
             elif response == '2':
-                client.send("Login\n")
-
-                while True:
-                    client.send("Enter your username:")
-                    existing_username = str(client.recv(1024))
-
-                    if existing_username == username:
-                        while True:
-                            client.send("Enter your password:")
-                            existing_password = str(client.recv(1024))
-
-                            if existing_password == password:
-                                client.send("You are logged in!\n\n")
-                                break
-                            else:
-                                client.send("Incorrect password. Try again.\n")
-                        break
-                    else:
-                        client.send("Incorrect username or doesn't exist. Try again.\n")
+                login(client, username, password)
 
             elif response == '3':
                 shutdown = "Goodbye"
