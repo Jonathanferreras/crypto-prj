@@ -14,12 +14,15 @@ if __name__ == '__main__':
 
     while True:
         response = server.recv(1024)
-        print response
         if response == "Goodbye":
 
             server.close()
             sys.exit()
         else:
-            data = raw_input()
+            while True:
+                print response
+                data = raw_input()
 
-            server.sendall(data)
+                if data:
+                    server.sendall(data)
+                    break

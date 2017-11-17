@@ -1,6 +1,6 @@
 import socket
 import sys
-from PasswordHandler import *
+from CreateAccount import *
 
 def connect():
     host = "127.0.0.1"
@@ -34,25 +34,7 @@ if __name__ == '__main__':
             response = client.recv(1024)
 
             if response == '1':
-                client.send("Let's create an account\n")
-
-                while True:
-                    client.send("Enter a username:")
-                    username = str(client.recv(1024))
-
-                    if username != "":
-                        while True:
-                            client.send("Enter a password:")
-                            password = str(client.recv(1024))
-
-                            if pw_check(password):
-                                client.send("Account created!\n\n")
-                                break
-                            else:
-                                client.send("Please enter a valid password.\n")
-                        break
-                    else:
-                        client.send("Please enter a valid username.\n")
+                username, password = create_account(client)
 
             elif response == '2':
                 client.send("Login\n")
