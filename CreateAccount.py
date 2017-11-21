@@ -1,26 +1,37 @@
 import socket
-import sys
+import os
+import os.path
 from PasswordHandler import *
-
-sys.dont_write_bytecode = True
+import no_bytecode
 
 def create_account(client):
+    root_dir = os.getcwd()
+    file_name = 'data.txt'
+    file_path = os.path.join(root_dir, file_name)
+
+    data_file = open(file_name, 'a+')
+    read_file = open(file_name, 'r')
+
     while True:
         client.send("Enter a username:")
         username = str(client.recv(1024))
 
-        if username != "":
-            while True:
-                client.send("Enter a password:")
-                password = str(client.recv(1024))
+        if username not in read_file.read():
+            if username != "":
+                while True:
+                    client.send("Enter a password:")
+                    password = str(client.recv(1024))
 
-                if pw_check(password):
-                    client.send("Account created!\n\n")
-                    break
-                else:
-                    client.send("Please enter a valid password.\n")
-            break
+                    if pw_check(password):
+                        client.send("Account created!\n\n")
+                        break
+                    else:
+                        client.send("Please enter a valid password.\n")
+                break
+            else:
+                client.send("Please enter a valid username.\n")
         else:
-            client.send("Please enter a valid username.\n")
+            client.send("Username taken, try again.\n")
 
-    return username, password
+    data_file.write(username + ", " + password + "\n")
+    data_file.close()

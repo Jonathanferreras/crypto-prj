@@ -1,7 +1,6 @@
 import socket
 import sys
-
-sys.dont_write_bytecode = True
+import no_bytecode
 
 def connect(server):
     host = "127.0.0.1"

@@ -2,8 +2,7 @@ import socket
 import sys
 from CreateAccount import *
 from Login import *
-
-sys.dont_write_bytecode = True
+import no_bytecode
 
 def connect():
     host = "127.0.0.1"
@@ -37,7 +36,7 @@ if __name__ == '__main__':
             response = client.recv(1024)
 
             if response == '1':
-                username, password = create_account(client)
+                create_account(client)
 
             elif response == '2':
                 login(client, username, password)

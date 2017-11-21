@@ -2,11 +2,9 @@ import client
 import server
 import os
 import time
-import sys
-
-sys.dont_write_bytecode = True
+import no_bytecode
 
 if __name__ == '__main__':
-    os.system('python server.py &')
+    os.system('python -B server.py &')
     time.sleep(2)
-    os.system('python client.py')
+    os.system('python -B client.py')
