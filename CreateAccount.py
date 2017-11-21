@@ -5,9 +5,7 @@ from PasswordHandler import *
 import no_bytecode
 
 def create_account(client):
-    root_dir = os.getcwd()
     file_name = 'data.txt'
-    file_path = os.path.join(root_dir, file_name)
 
     data_file = open(file_name, 'a+')
     read_file = open(file_name, 'r')

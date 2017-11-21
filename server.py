@@ -39,7 +39,7 @@ if __name__ == '__main__':
                 create_account(client)
 
             elif response == '2':
-                login(client, username, password)
+                login(client)
 
             elif response == '3':
                 shutdown = "Goodbye"

@@ -7,7 +7,6 @@ def pw_check(password):
         abc = dict.fromkeys(string.lowercase, True)
         nums = dict.fromkeys(string.digits, True)
         sym = dict.fromkeys(string.punctuation, True)
-
         ABC_flag = abc_flag = nums_flag = sym_flag = True
 
         for char in password:
